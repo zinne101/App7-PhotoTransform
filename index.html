@@ -166,24 +166,12 @@
        red = var avg
        green = var avg
         }
-       
-       c.putImageData(imageData, x, y);
-      }
-      var imageObj = new Image();
-       
-       for(var y = 0; y < imageHeight; y++){
-         for(var x = 0; x < imageWidth; x++){
-          var red = data[((imageWidth * y) + x) * 4];
-          var green = data[((imageWidth * y) + x) * 4 + 1];
-          var blue = data[((imageWidth * y) + x) * 4 + 2];
-          var alpha = data[((imageWidth * y) + x) * 4 + 3];
-         }
-       }
-  
-        
+         
+        c.putImageData(imageData, x, y);
         var imageObj = newImage()
         var imageObj.onload = function() {
-        drawImage();
+        c.drawImage();
+         
      </script> 
 
     </div><!-- /content -->
