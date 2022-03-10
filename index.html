@@ -145,30 +145,30 @@
      
       <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
      <script>
-     import java.io.File;
-     import java.io.IOException;
-     import java.awt.image.BufferedImage;
-     import javax.imageio.ImageIO,
-     
-     public class BlueImage {
-     public static void main(String args[])throws IOException{
-        BufferedImage img = null;
-        File f = null;
-        
-        //read image
-        try{
-            f = new File("D:\\Image\\sonam.jpg");
+       img.onload = function() {
+        var canvas = document.getElementById("secondCanvas");
+        var context = canvas.getContext("2d");
+        import java.io.File;
+        import java.io.IOException;
+        import java.awt.image.BufferedImage;
+        import javax.imageio.ImageIO,
+         
+         public class BlueImage {
+          public static void main(String args[])throws IOException{
+           BufferedImage img = null;
+           File f = null;
+           
+           try{
+            f = new File();
             img = ImageIO.read(f);
-        }catch(IOException e){
+           }catch(IOException e){
             System.out.println(e);
-        }
+           }
         
-        //get width and height
-        int width = img.getWidth();
-        int height = img.getHeight();
+           int width = img.getWidth();
+           int height = img.getHeight();
         
-        //convert to blue image
-        for(int y = 0; y < height; y++){
+           for(int y = 0; y < height; y++){
             for(int x = 0; x < width; x++){
                 int p = img.getRGB(x,y);
                 
@@ -189,8 +189,8 @@
         }catch(IOException e){
             System.out.println(e);
         }
-    }//main() ends here
-}//class ends here
+          }//main() ends here
+       }//class ends here
      </script>
 
 
