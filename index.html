@@ -145,31 +145,25 @@
      
       <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script>
-      function drawImage(imageObj) {
+      function drawImage() {
         var c = document.getElementById("secondCanvas");
         var cont = c.getContext("2d");
-        var imageWidth = imageObj.width;
-        var imageHeight = imageObj.height;
-        var imageData = c.getImageData(imageWidth, imageHeight);
+        var imageData = cont.getImageData(0, 0, c.width, c.height);
         var data = imageData.data;
        
-       for( i = 0, n = data.length; i < n; i += 4){
-          var red = data[i];
-          var green = data[i + 1];
-          var blue = data[i + 2];
-          var alpha = data[i + 3]; 
-          var avg (red + green + blue)/3
-        }
+       for(i = 0; i < imageData.data.length; i += 4){
+         var avg = imageData.data[i] + imageData.data[i+1] + imageData.data[i+2]/3
+         imageData.data[i] = avg;
+         imageData.data[i+1] = avg;
+         imageData.data[i+2] = 255;
+         imageData.data[i+3] = 255;
+       } 
        
-       for (var pixel of img.values()) {
-          var newRed = avg;
-          var newGreen = avg;
-        pixel.setGreen(newGreen);
-        pixel.setRed(newRed);
-       }
+     var img = new Image()
+     img.onload = function drawImage() {
+      c.putImageData(imageData, 0, 0);
+     }
        
-        c.putImageData(imageData, 0, 0);
-         
      </script> 
 
     </div><!-- /content -->
