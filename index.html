@@ -145,9 +145,10 @@
      
       <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script>
-      function drawImage() {
+       document.getElementById(img).onload = function drawImage() {
         var c = document.getElementById("secondCanvas");
         var cont = c.getContext("2d");
+        cont.drawImage(img, 0, 0);
         var imageData = cont.getImageData(0, 0, c.width, c.height);
         var data = imageData.data;
        
@@ -158,10 +159,9 @@
          imageData.data[i+2] = 255;
          imageData.data[i+3] = 255;
        } 
-       
-     var img = new Image()
-     img.onload = function drawImage() {
-      c.putImageData(imageData, 0, 0);
+      
+      cont.putImageData(imageData, 0, 0);
+        
      }
        
      </script> 
