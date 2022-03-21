@@ -102,7 +102,19 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
-          
+         var canvas2 = document.getElementById("secondCanvas");
+         var cont = canvas2.getContext("2d");
+         
+         var imageData = cont.getImageData(0, 0, canvas2.width, canvas2.height);
+         var data = imageData.data;
+         
+         for(var i = 0; i < imageData.data.length; i += 4){
+          /*var avg = imageData.data[i] + imageData.data[i+1] + imageData.data[i+2]/3*/
+          imageData.data[i] = 0;
+          imageData.data[i+1] = 0;
+          /*imageData.data[i+2] = 255;*/
+          /*imageData.data[i+3] = 255;*/
+         } 
           
           
         } // end of img.onload
@@ -143,23 +155,7 @@
         context.fillText("Original image will go here", 10, 20);
       </script>
      
-      <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script>
-        var canvas2 = document.getElementById("secondCanvas");
-        var cont = canvas2.getContext("2d");
-       
-        var imageData = cont.getImageData(0, 0, canvas2.width, canvas2.height);
-        var data = imageData.data;
-       
-       for(var i = 0; i < imageData.data.length; i += 4){
-         /*var avg = imageData.data[i] + imageData.data[i+1] + imageData.data[i+2]/3*/
-         imageData.data[i] = 0;
-         imageData.data[i+1] = 0;
-         /*imageData.data[i+2] = 255;*/
-         /*imageData.data[i+3] = 255;*/
-       } 
-       
-     </script> 
+     <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
