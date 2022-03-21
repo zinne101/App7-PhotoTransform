@@ -99,7 +99,9 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
+         var canvas2 = document.getElementById("secondCanvas");
+         var cont = canvas2.getContext("2d");
+         
          var imageData = cont.getImageData(0, 0, canvas2.width, canvas2.height);
          var data = imageData.data;
          
