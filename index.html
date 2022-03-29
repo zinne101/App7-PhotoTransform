@@ -107,7 +107,7 @@
          var canvas2 = document.getElementById("secondCanvas");
          var context2 = canvas2.getContext("2d");
          
-         var imageData = context2.getImageData(0, 0, 600, 500);
+         var imageData = context.getImageData(0, 0, 600, 500);
          var data = imageData.data;
          
          for(var i = 0; i < data.length; i += 4){
