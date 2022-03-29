@@ -42,6 +42,7 @@
  <script>
   var docMod = document.lastModified; // gets last modified date and time of the index.html file
   console.log("This file last modified  " + docMod); // displays last modified date and time in the javascipt browser console 
+  console.log("This message will be displayed on the Javascript debugging console") 
 
 /* detectVerticalSquash & drawImageIOSFix = are functions that are critical due to a flaw in the iPhone camera software that squishes any photos displayed on an HTML5 canvas element. https://github.com/stomita/ios-imagefile-megapixel
 */
@@ -79,10 +80,12 @@
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
   var messageDisplayArea = document.getElementById('messageDisplayArea');
+  
   /* fileInput.addEventListener looks for any change in the <input> tag indicating that the user has selected a file (picture). */
   fileInput.addEventListener('change', function(e) {
     var file = fileInput.files[0];
     var imageType = /image.*/;
+   
     /* if (file.type.match(imageType)) checks that the selected file is indeed an image. */
     if (file.type.match(imageType)) {
       /* new FileReader(); and reader.onload start some kind of file reading process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
@@ -91,7 +94,8 @@
         /* messageDisplayArea.innerHTML not needed but allows you to send a message at this point in the program. */
         messageDisplayArea.innerHTML = "You picked an image!";
         /* new Image() and img.onload start some kind of new image creation process in javaScript. I do not understand why this is necessary although it may simply slow things down to let the image load. */
-        var img = new Image();
+        
+       var img = new Image();
         img.onload = function() {
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
         
@@ -99,10 +103,11 @@
 
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-         var canvas2 = document.getElementById("secondCanvas");
-         var cont = canvas2.getContext("2d");
          
-         var imageData = cont.getImageData(0, 0, canvas2.width, canvas2.height);
+         var canvas2 = document.getElementById("secondCanvas");
+         var context2 = canvas2.getContext("2d");
+         
+         var imageData = context2.getImageData(0, 0, 600, 500);
          var data = imageData.data;
          
          for(var i = 0; i < data.length; i += 4){
@@ -110,7 +115,7 @@
           data[i+1] = 0;
           
          } 
-         cont.putImageData(imageData, 0, 0);
+         context2.putImageData(imageData, 0, 0);
           
         } // end of img.onload
         
