@@ -24,10 +24,10 @@
   http://stackoverflow.com/questions/11929099/html5-canvas-drawimage-ratio-bug-ios
   
   Brief Description of Goal of Code:
-  blah, blah, blah,
+  The goal of this code is to upload an image onto two canvas, with the first canvas displaying the original image and the second one displaying only the blue intensities of the image. 
  
   Known Issues:
-  blah, blah, blah, blah
+  An issue encountered when creating this code was having the image show up on the second canvas. 
 -->
 
  <head>
@@ -104,18 +104,19 @@
           /*  +++++++++++++++ BEGIN IMAGE PROCESSING +++++++++++++++ */
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
          
-         var canvas2 = document.getElementById("secondCanvas");
-         var context2 = canvas2.getContext("2d");
+         var canvas2 = document.getElementById("secondCanvas"); // This calls the second canvas so we know where we are adding the altered image. 
+         var context2 = canvas2.getContext("2d"); //This method obtains context defined by the parameter of being 2d.
          
-         var imageData = context.getImageData(0, 0, 600, 500);
-         var data = imageData.data;
+         var imageData = context.getImageData(0, 0, 600, 500); // Retreives the image data of all the pixels in the first canvas as defined by the parameters.
+         var data = imageData.data; // Returns the object that stores the pixel data. 
          
-         for(var i = 0; i < data.length; i += 4){
-          data[i] = 0;
-          data[i+1] = 0;
+         // code for changing image color
+         for(var i = 0; i < data.length; i += 4){ // This array runs a loop through the pixel data. The starting position for the loop is 0. 
+          data[i] = 0; // This changes the red color intensity of all the pixels to zero. 
+          data[i+1] = 0; // This changes the green color intensity of all the pixels to zero. 
           
          } 
-         context2.putImageData(imageData, 0, 0);
+         context2.putImageData(imageData, 0, 0); // Puts the image with all the functions applied onto the second. 
           
         } // end of img.onload
         
@@ -146,22 +147,22 @@
       </div>
       <div id="messageDisplayArea"></div>
       
-      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-      <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var canvas = document.getElementById('myCanvas');
-        var context = canvas.getContext("2d");
-        context.font = '20pt Calibri';
-        context.fillStyle = "black";
-        context.fillText("Original image will go here", 10, 20);
+      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!-- This adds the canvas to the page with the defined width and height and border style -->
+      <script> /* This script initiates the canvas and puts the text on the canvas "myCanvas" */
+        var canvas = document.getElementById('myCanvas'); // Calls the first canvas 
+        var context = canvas.getContext("2d"); // Obtains context defined by the parameter of being 2d
+        context.font = '20pt Calibri'; // This defines the font style and size of the text.  
+        context.fillStyle = "black"; // This defines the font color. 
+        context.fillText("Original image will go here", 10, 20); // Draws text. In the parenthesis the string, which is what text will be displayed, was added as well as the coordinates for the text.
       </script>
      
-     <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
-     <script>
-      var canvas2 = document.getElementById("secondCanvas");
-      var context2 = canvas2.getContext("2d");
-      context2.font = '20pt Calibri';
-      context2.fillStyle = "black";
-      context2.fillText("Blue image will go here", 10, 20);
+     <canvas id="secondCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas> <!-- This adds the second canvas to the page with the defined width and height and border style -->
+     <script> /* This script initiates the canvas and puts the text on the canvas "secondCanvas" */
+      var canvas2 = document.getElementById("secondCanvas"); // Calls the second canvas 
+      var context2 = canvas2.getContext("2d"); // Obtains context defined by the parameter of being 2d
+      context2.font = '20pt Calibri'; // This defines the font style and size of the text.
+      context2.fillStyle = "blue"; // This defines the font color.
+      context2.fillText("Blue image will go here", 10, 20); // Draws text. In the parenthesis the string, which is what text will be displayed, was added as well as the coordinates for the text.
      </script>
      
     </div><!-- /content -->
